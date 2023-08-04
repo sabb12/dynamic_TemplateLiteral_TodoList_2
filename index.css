@@ -1,0 +1,35 @@
+.container {
+  border: 1px solid black;
+  display: flex;
+  width: 400px;
+  height: 1000px;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.wrapper {
+  margin-top: 10px;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.headerContainer {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.bodyWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 5px;
+}

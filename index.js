@@ -1,8 +1,5 @@
 const input = document.querySelector(".inputValue");
 
-// const todoList = [
-//   { id: Math.ceil(Math.random() * 10), content: "", completed: false },
-// ];
 let newArray = [];
 
 function listToHtml(list) {
@@ -10,31 +7,49 @@ function listToHtml(list) {
 }
 
 function todoListHTML(todo) {
-  return `<div class="bodyWrapper" data-id="${todo.id}" >
+  return `<div class="todoContainer" data-id="${todo.id}" >
                 <input type="checkbox" class="checkboxValue" ${
                   todo.checked ? "checked" : ""
                 }/>
-                <div>${todo.content}</div>
+                <input type="text" class="todoContent" value="${todo.content}"/>
+                ${
+                  todo.checked
+                    ? ""
+                    : '<button class="updateButton">수정</button>'
+                }
                 <button class="deleteButton">삭제</button>
             </div>`;
 }
-document.getElementById("addBtn").addEventListener("click", (e) => {
-  newArray.push({
-    id: Date.now(),
-    content: input.value,
-    checked: false,
-  });
-  // const uncompletedItems = newArray.filter((item) => !item.completed);
-  document
-    .querySelector(".bodyInnerHTML")
-    .insertAdjacentHTML(
-      "beforeend",
-      todoListHTML(newArray[newArray.length - 1])
-    );
 
-  input.value = "";
+// todo 추가
+function todoItem() {
+  if (input.value.trim()) {
+    newArray.push({
+      id: Date.now(),
+      content: input.value,
+      checked: false,
+    });
+
+    document
+      .querySelector(".todoInnerHTML")
+      .insertAdjacentHTML(
+        "beforeend",
+        todoListHTML(newArray[newArray.length - 1])
+      );
+
+    input.value = "";
+  }
+}
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    todoItem();
+  }
 });
 
+document.getElementById("addBtn").addEventListener("click", todoItem);
+
+// 삭제
 document.addEventListener("click", function deleteButton(e) {
   if (!e.target.classList.contains("deleteButton")) return;
   const id = Number(e.target.parentElement.dataset.id);
@@ -43,12 +58,6 @@ document.addEventListener("click", function deleteButton(e) {
   newArray = newArray.filter((item) => item.id !== id);
   // DOM에서 지운다
   e.target.parentElement.remove();
-  // const completedCount = newArray.filter((item) => item.completed);
-  // const acompletedCount = newArray.filter((item) => !item.completed);
-  // document.querySelector(".bodyInnerHTML").innerHTML =
-  //   listToHtml(acompletedCount);
-  // document.querySelector(".footerInnerHTML").innerHTML =
-  //   listToHtml(completedCount);
 });
 
 document.addEventListener("click", function checkBox(e) {
@@ -56,35 +65,32 @@ document.addEventListener("click", function checkBox(e) {
   const id = Number(e.target.parentElement.dataset.id);
   const todoItem = newArray.find((item) => item.id === id);
   todoItem.checked = !todoItem.checked;
-  // if(todoItem.checked) {
-  //   todoItem.checked = false
-  // } else {
-  //   todiItem.checked = true
-  // }
+
   e.target.parentElement.remove();
-  // if (!todoItem.checked) {
-  //   document
-  //     .querySelector(".bodyInnerHTML")
-  //     .insertAdjacentHTML("beforeend", todoListHTML(todoItem));
-  // } else {
-  //   document
-  //     .querySelector(".footerInnerHTML")
-  //     .insertAdjacentHTML("beforeend", todoListHTML(todoItem));
-  // }
+
   !todoItem.checked
     ? document
-        .querySelector(".bodyInnerHTML")
+        .querySelector(".todoInnerHTML")
         .insertAdjacentHTML("beforeend", todoListHTML(todoItem))
     : document
-        .querySelector(".footerInnerHTML")
+        .querySelector(".completedInnerHTML")
         .insertAdjacentHTML("beforeend", todoListHTML(todoItem));
+});
 
-  // const completedCount = newArray.filter((item) => item.completed);
-  // const acompletedCount = newArray.filter((item) => !item.completed);
+document.addEventListener("click", function updateButton(e) {
+  if (!e.target.classList.contains("updateButton")) return;
+  const todoContainer = e.target.parentElement;
+  const todoContent = todoContainer.querySelector(".todoContent");
 
-  // document.querySelector(".footerInnerHTML").innerHTML =
-  //   listToHtml(completedCount);
-
-  // document.querySelector(".bodyInnerHTML").innerHTML =
-  //   listToHtml(acompletedCount);
+  if (e.target.textContent === "수정") {
+    todoContent.removeAttribute("readonly");
+    todoContent.focus();
+    e.target.textContent = "저장";
+  } else {
+    todoContent.setAttribute("readonly", true);
+    const id = Number(todoContainer.dataset.id);
+    const todoItem = newArray.find((item) => item.id === id);
+    todoItem.content = todoContent.value;
+    e.target.textContent = "수정";
+  }
 });

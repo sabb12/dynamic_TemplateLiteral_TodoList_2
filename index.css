@@ -82,5 +82,38 @@
   font-size: 25px;
   width: 100%;
   min-height: 280px;
+  padding: 10px 11px;
   border: 1px solid black;
+}
+
+.todoInnerHTML {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 15px;
+}
+.todoInnerHTML .todoContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.todoInnerHTML .todoContainer .checkboxValue {
+  margin-right: 11px;
+}
+
+.todoInnerHTML .todoContainer .todoContent {
+  margin-right: 11px;
+  border: none;
+}
+.todoInnerHTML .todoContainer .updateButton {
+  margin-right: 11px;
+}
+
+.completedInnerHTML .todoContainer .todoContent {
+  margin-right: 11px;
+  border: none;
+}
+
+.title {
+  font-size: 35px;
 }

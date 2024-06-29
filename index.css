@@ -44,6 +44,7 @@
 
 .inputContainer .inputValue::placeholder {
   font-size: 20px;
+  color: lightgrey;
 }
 
 .inputContainer .inputValue:focus {
@@ -64,4 +65,22 @@
 
 .inputContainer #addBtn:active {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+/*todo List container*/
+
+.listWrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.todoListContainer,
+.completedListContainer {
+  text-align: left;
+  font-size: 25px;
+  width: 100%;
+  min-height: 280px;
+  border: 1px solid black;
 }

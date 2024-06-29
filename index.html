@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
       rel="stylesheet"
     />
-    <title>React todoList</title>
+    <title>📜 템플릿 리터럴로 만든 투두 리스트</title>
   </head>
   <body>
     <section class="wrapper">
@@ -21,23 +21,25 @@
           <input
             type="text"
             class="inputValue"
-            placeholder="What would you like to do?"
+            placeholder="오늘 무엇을 하실 것인가요?"
           />
           <button id="addBtn">추가</button>
         </div>
-        <div class="bodyContainer">
-          <h3>오늘 할 일</h3>
-          <div class="bodyInnerHTML">
-            <!-- <div class="bodyWrapper">
+        <div class="listWrapper">
+          <div class="todoListContainer">
+            <h3 class="title">오늘 할 일</h3>
+            <div class="bodyInnerHTML">
+              <!-- <div class="bodyWrapper">
                         <input type="checkbox" class="checkboxValue" />
                         <div>wef</div>
                         <button class="deleteButton">삭제</button>
                     </div> -->
+            </div>
           </div>
-        </div>
-        <div class="footerContainer">
-          <h3>완료한 일</h3>
-          <div class="footerInnerHTML"></div>
+          <div class="completedListContainer">
+            <h3 class="title">완료한 일</h3>
+            <div class="footerInnerHTML"></div>
+          </div>
         </div>
       </div>
     </section>

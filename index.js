@@ -8,15 +8,15 @@ function listToHtml(list) {
 
 function todoListHTML(todo) {
   return `<div class="todoContainer" data-id="${todo.id}" >
-                <input type="checkbox" class="checkboxValue" ${
-                  todo.checked ? "checked" : ""
-                }/>
-                <input type="text" class="todoContent" value="${todo.content}"/>
-                ${
-                  todo.checked
-                    ? ""
-                    : '<button class="updateButton">수정</button>'
-                }
+              <input type="checkbox" class="checkboxValue" ${
+                todo.checked ? "checked" : ""
+              }/>
+                <input type="text" class="todoContent" value="${
+                  todo.content
+                }" readonly/>
+              ${
+                todo.checked ? "" : '<button class="updateButton">수정</button>'
+              }
                 <button class="deleteButton">삭제</button>
             </div>`;
 }
@@ -84,10 +84,12 @@ document.addEventListener("click", function updateButton(e) {
 
   if (e.target.textContent === "수정") {
     todoContent.removeAttribute("readonly");
+    todoContent.style.outline = "2px solid black"; // Add an outline when editing
     todoContent.focus();
     e.target.textContent = "저장";
   } else {
     todoContent.setAttribute("readonly", true);
+    todoContent.style.outline = "none"; // Remove the outline when done editing
     const id = Number(todoContainer.dataset.id);
     const todoItem = newArray.find((item) => item.id === id);
     todoItem.content = todoContent.value;

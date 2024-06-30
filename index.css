@@ -40,10 +40,11 @@
   border-bottom: 1px solid;
   margin-top: 14px;
   height: 30px;
+  font-size: 25px;
 }
 
 .inputContainer .inputValue::placeholder {
-  font-size: 20px;
+  font-size: 25px;
   color: lightgrey;
 }
 
@@ -81,9 +82,9 @@
   text-align: left;
   font-size: 25px;
   width: 100%;
-  min-height: 280px;
+  height: 280px;
   padding: 10px 11px;
-  border: 1px solid black;
+  overflow: scroll;
 }
 
 .todoInnerHTML {
@@ -91,6 +92,7 @@
   flex-direction: column;
   gap: 5px;
   padding-top: 15px;
+  width: 100%;
 }
 .todoInnerHTML .todoContainer {
   display: flex;
@@ -99,21 +101,121 @@
 
 .todoInnerHTML .todoContainer .checkboxValue {
   margin-right: 11px;
+  width: 30px;
+  height: auto;
 }
 
 .todoInnerHTML .todoContainer .todoContent {
   margin-right: 11px;
   border: none;
+  font-size: 20px;
+  height: 22px;
 }
+
+.todoInnerHTML .todoContainer .todoContent:focus {
+  outline: none;
+}
+
 .todoInnerHTML .todoContainer .updateButton {
   margin-right: 11px;
+  background-color: #f4444e;
+  border: none;
+  font-size: 20px;
+  border-radius: 3px;
+  padding: 0 5px 0 5px;
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+  color: #ffffff;
+}
+.todoInnerHTML .todoContainer .updateButton:active {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.todoInnerHTML .todoContainer .deleteButton {
+  margin-right: 11px;
+  background-color: #4169e1;
+  border: none;
+  font-size: 20px;
+  border-radius: 3px;
+  padding: 0 5px 0 5px;
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.todoInnerHTML .todoContainer .deleteButton:active {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+/*todo completed container*/
+.completedInnerHTML {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 15px;
+  width: 100%;
+}
+.completedInnerHTML .todoContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.completedInnerHTML .todoContainer .checkboxValue {
+  margin-right: 11px;
+  width: 23px;
+  height: auto;
 }
 
 .completedInnerHTML .todoContainer .todoContent {
   margin-right: 11px;
   border: none;
+  font-size: 20px;
+  height: 22px;
+  width: 100%;
 }
 
-.title {
-  font-size: 35px;
+.completedInnerHTML .todoContainer .todoContent:focus {
+  outline: none;
+}
+
+.completedInnerHTML .todoContainer .deleteButton {
+  margin-right: 11px;
+  background-color: #4169e1;
+  border: none;
+  font-size: 20px;
+  border-radius: 3px;
+  padding: 0 5px 0 5px;
+  width: 48px;
+  height: auto;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.completedInnerHTML .todoContainer .deleteButton:active {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+@media screen and (min-width: 712px) {
+  .inputContainer {
+    padding: 0 30px 0 30px;
+  }
+
+  .inputContainer .inputValue {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid;
+    margin-top: 32px;
+    height: 30px;
+    font-size: 45px;
+  }
+
+  .inputContainer .inputValue::placeholder {
+    font-size: 45px;
+  }
+  .inputContainer #addBtn {
+    font-size: 45px;
+    width: 15%;
+  }
 }

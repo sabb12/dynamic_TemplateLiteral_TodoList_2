@@ -20,17 +20,16 @@
   align-items: center;
 }
 
-/* input and button section */
 .inputContainer {
   width: 100%;
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.inputContainer .inputValue {
+.inputValue {
   border: none;
   width: 80%;
   border-bottom: 1px solid;
@@ -39,32 +38,30 @@
   font-size: 25px;
 }
 
-.inputContainer .inputValue::placeholder {
+.inputValue::placeholder {
   font-size: 25px;
   color: lightgrey;
 }
 
-.inputContainer .inputValue:focus {
+.inputValue:focus {
   outline: none;
 }
 
-.inputContainer #addBtn {
+#addBtn {
   background-color: #f0c14b;
   border: none;
   border-radius: 3px;
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
   margin-top: 14px;
   width: 15%;
-  height: auto;
   font-size: 25px;
   cursor: pointer;
 }
 
-.inputContainer #addBtn:active {
+#addBtn:active {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-/*todo List container*/
 .listWrapper {
   margin-top: 20px;
   display: flex;
@@ -81,88 +78,7 @@
   padding: 12px 11px;
 }
 
-.todoInnerHTML {
-  border: none;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 10px;
-  width: 100%;
-  height: 237px;
-  padding-top: 5px;
-  overflow: scroll;
-}
-.todoInnerHTML .todoContainer {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.todoInnerHTML .todoContainer .todoSection1 {
-  display: flex;
-  width: 100%;
-}
-
-.todoInnerHTML .todoContainer .todoSection1 .checkboxValue {
-  margin-right: 6px;
-  width: 15px;
-  height: auto;
-}
-
-.todoInnerHTML .todoContainer .todoSection1 .todoContent {
-  border: none;
-  font-size: 20px;
-  width: 100%;
-  height: 30px;
-}
-
-.todoInnerHTML .todoContainer .todoSection1 .todoContent:focus {
-  outline: none;
-}
-
-.todoInnerHTML .todoContainer .todoSection2 {
-  display: flex;
-  gap: 10px;
-}
-
-.todoInnerHTML .todoContainer .todoSection2 .updateButton {
-  background-color: #f4444e;
-  border: none;
-  font-size: 20px;
-  border-radius: 3px;
-  padding: 0 10px 0 10px;
-  height: 30px;
-  width: 55px;
-  cursor: pointer;
-  color: #ffffff;
-}
-.todoInnerHTML .todoContainer .todoSection2 .updateButton:active {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-
-.todoInnerHTML .todoContainer .todoSection2 .deleteButton {
-  background-color: #4169e1;
-  border: none;
-  font-size: 20px;
-  border-radius: 3px;
-  padding: 0 10px 0 10px;
-  height: 30px;
-  width: 55px;
-  cursor: pointer;
-  color: #ffffff;
-}
-
-.todoInnerHTML .todoContainer .todoSection2 .deleteButton:active {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-
-/*todo completed container*/
-.completedListContainer .title {
-  margin-top: 10px;
-}
-
+.todoInnerHTML,
 .completedInnerHTML {
   border: none;
   border-top: 1px solid black;
@@ -176,89 +92,92 @@
   padding-top: 5px;
   overflow: scroll;
 }
-.completedInnerHTML .todoContainer {
+
+.todoContainer {
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
 
-.completedInnerHTML .todoContainer .todoSection1 {
+.todoSection1 {
   display: flex;
   width: 100%;
 }
 
-.completedInnerHTML .todoContainer .todoSection1 .checkboxValue {
+.checkboxValue {
   margin-right: 6px;
   width: 15px;
-  height: auto;
 }
 
-.completedInnerHTML .todoContainer .todoSection1 .todoContent {
+.todoContent {
   border: none;
   font-size: 20px;
   width: 100%;
   height: 30px;
 }
 
-.completedInnerHTML .todoContainer .todoSection1 .todoContent:focus {
+.todoContent:focus {
   outline: none;
 }
 
-.completedInnerHTML .todoContainer .todoSection2 {
+.todoSection2 {
   display: flex;
   gap: 10px;
 }
 
-.completedInnerHTML .todoContainer .todoSection2 .deleteButton {
-  background-color: #4169e1;
+.updateButton,
+.deleteButton {
   border: none;
   font-size: 20px;
   border-radius: 3px;
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   height: 30px;
   width: 55px;
   cursor: pointer;
   color: #ffffff;
 }
 
-.completedInnerHTML .todoContainer .todoSection2 .deleteButton:active {
+.updateButton {
+  background-color: #f4444e;
+}
+
+.deleteButton {
+  background-color: #4169e1;
+}
+
+.updateButton:active,
+.deleteButton:active {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.completedListContainer .title {
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 1500px) {
   .container {
-    margin: 20px 500px 0 500px;
+    margin: 20px 500px 0;
   }
 
   .inputContainer {
-    display: flex;
     justify-content: space-between;
     width: 87%;
     padding: 0;
   }
 
-  .inputContainer .inputValue {
+  .inputValue {
     font-size: 30px;
   }
 
-  .inputContainer .inputValue::placeholder {
+  .inputValue::placeholder {
     font-size: 30px;
   }
 
-  .inputContainer #addBtn {
-    background-color: #f0c14b;
-    border: none;
-    border-radius: 3px;
-    padding: 0;
-    margin-top: 14px;
-    width: 15%;
-    height: auto;
+  #addBtn {
     font-size: 30px;
-    cursor: pointer;
   }
 
   .listWrapper {
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -267,7 +186,6 @@
   .todoListContainer,
   .completedListContainer {
     font-size: 30px;
-    overflow: none;
     width: 87%;
     height: 392px;
     padding: 12px 0;
@@ -275,28 +193,15 @@
 
   .todoInnerHTML,
   .completedInnerHTML {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 10px;
-    width: 100%;
     height: 349px;
     overflow: auto;
   }
 
-  .todoInnerHTML .todoContainer .todoSection1 .checkboxValue {
+  .checkboxValue {
     width: 20px;
   }
 
-  .todoInnerHTML .todoContainer .todoSection1 .todoContent {
-    font-size: 30px;
-  }
-
-  .completedInnerHTML .todoContainer .todoSection1 .checkboxValue {
-    width: 20px;
-  }
-
-  .completedInnerHTML .todoContainer .todoSection1 .todoContent {
+  .todoContent {
     font-size: 30px;
   }
 }

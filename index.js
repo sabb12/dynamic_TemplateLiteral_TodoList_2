@@ -94,12 +94,12 @@ document.addEventListener("click", function updateButton(e) {
 
   if (e.target.textContent === "수정") {
     todoContent.removeAttribute("readonly");
-    todoContent.style.outline = "2px solid black"; // Add an outline when editing
+    todoContent.style.outline = "2px solid black";
     todoContent.focus();
     e.target.textContent = "저장";
   } else {
     todoContent.setAttribute("readonly", true);
-    todoContent.style.outline = "none"; // Remove the outline when done editing
+    todoContent.style.outline = "none";
     const id = Number(todoContainer.dataset.id);
     const todoItem = newArray.find((item) => item.id === id);
     todoItem.content = todoContent.value;

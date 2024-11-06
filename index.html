@@ -5,36 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <script src="index.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
-      rel="stylesheet"
-    />
-    <title>📜 템플릿 리터럴로 만든 투두 리스트</title>
+    <title>템플릿 리터럴로 만든 투두 리스트</title>
   </head>
   <body>
-    <section class="wrapper">
-      <div class="container">
-        <div class="inputContainer">
-          <input
-            type="text"
-            class="inputValue"
-            placeholder="오늘 무엇을 하실 것인가요?"
-          />
-          <button id="addBtn">추가</button>
+    <div class="container">
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="What are your tasks for today?" />
+        <button id="addBtn">Add</button>
+      </div>
+      <div class="todoListContainer">
+        <div class="todoList">
+          <div class="todoTitle">TO DO LIST</div>
+          <div class="todoContent"></div>
         </div>
-        <div class="listWrapper">
-          <div class="todoListContainer">
-            <h3 class="title">오늘 할 일</h3>
-            <div class="todoInnerHTML"></div>
-          </div>
-          <div class="completedListContainer">
-            <h3 class="title">완료한 일</h3>
-            <div class="completedInnerHTML"></div>
-          </div>
+        <div class="doneList">
+          <div class="doneTitle">DONE LIST</div>
+          <div class="doneContent"></div>
         </div>
       </div>
-    </section>
+    </div>
   </body>
 </html>

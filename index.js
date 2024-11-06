@@ -1,4 +1,4 @@
-const input = document.querySelector(".inputValue");
+const input = document.querySelector(".input");
 
 let newArray = [];
 
@@ -9,18 +9,12 @@ function listToHtml(list) {
 function todoListHTML(todo) {
   return `<div class="todoContainer" data-id="${todo.id}" >
             <div class="todoSection1">
-              <input type="checkbox" class="checkboxValue" ${
-                todo.checked ? "checked" : ""
-              }/>
-              <input type="text" class="todoContent" value="${
-                todo.content
-              }" readonly/>
+              <input type="checkbox" class="checkbox" ${todo.checked ? "checked" : "" }/>
             </div>
             <div class="todoSection2">
-              ${
-                todo.checked ? "" : '<button class="updateButton">수정</button>'
-              }
-              <button class="deleteButton">삭제</button>
+              <input type="text" value="${todo.content}" class="todo" disabled/>
+              ${todo.checked ? "" : '<button class="updateButton">수정</button>'}
+              <button type="button" class="deleteButton">삭제</button>
             </div>
           </div>`;
 }
@@ -35,7 +29,7 @@ function todoItem() {
     });
 
     document
-      .querySelector(".todoInnerHTML")
+      .querySelector(".todoContent")
       .insertAdjacentHTML(
         "beforeend",
         todoListHTML(newArray[newArray.length - 1])
@@ -56,52 +50,45 @@ document.getElementById("addBtn").addEventListener("click", todoItem);
 // 삭제
 document.addEventListener("click", function deleteButton(e) {
   if (!e.target.classList.contains("deleteButton")) return;
-  const todoContainer = e.target.closest(".todoContainer");
-  const id = Number(todoContainer.dataset.id);
+  const id = Number(e.target.parentElement.dataset.id);
 
   // 배열에서만 지워지고 있다
   newArray = newArray.filter((item) => item.id !== id);
   // DOM에서 지운다
-  todoContainer.remove();
+  e.target.parentElement.parentElement.remove();
 });
 
-// 체크박스
 document.addEventListener("click", function checkBox(e) {
-  if (!e.target.classList.contains("checkboxValue")) return;
+  if (!e.target.classList.contains("checkbox")) return;
   const todoContainer = e.target.closest(".todoContainer");
   const id = Number(todoContainer.dataset.id);
   const todoItem = newArray.find((item) => item.id === id);
-  todoItem.checked = !todoItem.checked;
+  todoItem.checked = e.target.checked;
 
+  // Move item between To Do and Done lists
   todoContainer.remove();
-
-  if (!todoItem.checked) {
-    document
-      .querySelector(".todoInnerHTML")
-      .insertAdjacentHTML("beforeend", todoListHTML(todoItem));
-  } else {
-    document
-      .querySelector(".completedInnerHTML")
-      .insertAdjacentHTML("beforeend", todoListHTML(todoItem));
-  }
+  const targetContainer = todoItem.checked ? ".doneContent" : ".todoContent";
+  document.querySelector(targetContainer).insertAdjacentHTML(
+    "beforeend",
+    todoListHTML(todoItem)
+  );
 });
 
-// 수정 버튼
 document.addEventListener("click", function updateButton(e) {
   if (!e.target.classList.contains("updateButton")) return;
+  
   const todoContainer = e.target.closest(".todoContainer");
-  const todoContent = todoContainer.querySelector(".todoContent");
+  const todoContent = todoContainer.querySelector(".todo");
+  const todoItem = newArray.find((item) => item.id === Number(todoContainer.dataset.id));
 
   if (e.target.textContent === "수정") {
-    todoContent.removeAttribute("readonly");
-    todoContent.style.outline = "2px solid black";
+    todoContent.disabled = false; 
+    // todoContent.style.outline = "2px solid black"; 
     todoContent.focus();
     e.target.textContent = "저장";
   } else {
-    todoContent.setAttribute("readonly", true);
+    todoContent.disabled = true; 
     todoContent.style.outline = "none";
-    const id = Number(todoContainer.dataset.id);
-    const todoItem = newArray.find((item) => item.id === id);
     todoItem.content = todoContent.value;
     e.target.textContent = "수정";
   }

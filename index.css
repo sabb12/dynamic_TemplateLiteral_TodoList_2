@@ -45,7 +45,7 @@ html, body {
   border-color: #4e92df;
 }
 
-.addBtn {
+#addBtn {
   background-color: #ffc107;
   border: none;
   color: #fff;
@@ -57,7 +57,7 @@ html, body {
   transition: background-color 0.3s;
 }
 
-.addBtn:hover {
+#addBtn:hover {
   background-color: #e0a800;
 }
 
@@ -122,6 +122,10 @@ html, body {
   width: 18px;
   height: 18px;
   margin-right: 10px;
+}
+
+.todoSection2{
+    display: flex;
 }
 
 .todo {

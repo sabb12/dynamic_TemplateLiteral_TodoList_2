@@ -1,6 +1,6 @@
 const input = document.querySelector(".input");
 
-let newArray = [];
+let newTodo = [];
 
 function listToHtml(list) {
   return list.map((item) => todoListHTML(item)).join("");
@@ -20,9 +20,9 @@ function todoListHTML(todo) {
 }
 
 // todo 추가
-function todoItem() {
+function handleCreateTodo() {
   if (input.value.trim()) {
-    newArray.push({
+    newTodo.push({
       id: Date.now(),
       content: input.value,
       checked: false,
@@ -32,7 +32,7 @@ function todoItem() {
       .querySelector(".todoContent")
       .insertAdjacentHTML(
         "beforeend",
-        todoListHTML(newArray[newArray.length - 1])
+        todoListHTML(newTodo[newTodo.length - 1])
       );
 
     input.value = "";
@@ -41,11 +41,11 @@ function todoItem() {
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    todoItem();
+    handleCreateTodo();
   }
 });
 
-document.getElementById("addBtn").addEventListener("click", todoItem);
+document.getElementById("addBtn").addEventListener("click", handleCreateTodo);
 
 // 삭제
 document.addEventListener("click", function deleteButton(e) {
@@ -53,7 +53,7 @@ document.addEventListener("click", function deleteButton(e) {
   const id = Number(e.target.parentElement.dataset.id);
 
   // 배열에서만 지워지고 있다
-  newArray = newArray.filter((item) => item.id !== id);
+  newTodo = newTodo.filter((item) => item.id !== id);
   // DOM에서 지운다
   e.target.parentElement.parentElement.remove();
 });
@@ -62,15 +62,15 @@ document.addEventListener("click", function checkBox(e) {
   if (!e.target.classList.contains("checkbox")) return;
   const todoContainer = e.target.closest(".todoContainer");
   const id = Number(todoContainer.dataset.id);
-  const todoItem = newArray.find((item) => item.id === id);
-  todoItem.checked = e.target.checked;
+  const handleCreateTodo = newTodo.find((item) => item.id === id);
+  handleCreateTodo.checked = e.target.checked;
 
   // Move item between To Do and Done lists
   todoContainer.remove();
-  const targetContainer = todoItem.checked ? ".doneContent" : ".todoContent";
+  const targetContainer = handleCreateTodo.checked ? ".doneContent" : ".todoContent";
   document.querySelector(targetContainer).insertAdjacentHTML(
     "beforeend",
-    todoListHTML(todoItem)
+    todoListHTML(handleCreateTodo)
   );
 });
 
@@ -79,7 +79,7 @@ document.addEventListener("click", function updateButton(e) {
   
   const todoContainer = e.target.closest(".todoContainer");
   const todoContent = todoContainer.querySelector(".todo");
-  const todoItem = newArray.find((item) => item.id === Number(todoContainer.dataset.id));
+  const handleCreateTodo = newTodo.find((item) => item.id === Number(todoContainer.dataset.id));
 
   if (e.target.textContent === "수정") {
     todoContent.disabled = false; 
@@ -89,7 +89,7 @@ document.addEventListener("click", function updateButton(e) {
   } else {
     todoContent.disabled = true; 
     todoContent.style.outline = "none";
-    todoItem.content = todoContent.value;
+    handleCreateTodo.content = todoContent.value;
     e.target.textContent = "수정";
   }
 });

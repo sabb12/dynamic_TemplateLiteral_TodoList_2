@@ -18,12 +18,26 @@ document.addEventListener("click", function (e) {
   console.log("삭제 버튼 클릭됨");
 });
 ```
+##### 5. inserAdjacentHTML은 HTML 문자열을 특정 위치에 바로 삽입할 수 있게 해주는 DOM 메서드임 
+##### - [사용방법]: container.insertAdjacentHTML('beforebegin' 또는 'afterbegin' 또는 'beforeend' 또는 'afterend', '<p>beforebegin 위치에 추가된 문단</p>');
+```html
+<p>beforebegin 위치에 추가된 문단</p> <!-- beforebegin -->
+<div id="container">
+  <p>afterbegin 위치에 추가된 문단</p> <!-- afterbegin -->
+  <p>첫 번째 문단</p>
+  <p>beforeend 위치에 추가된 문단</p> <!-- beforeend -->
+</div>
+<p>afterend 위치에 추가된 문단</p> <!-- afterend -->
+```
+##### 6. newTodo[newTodo.length -1]를 사용하는 이유는 사용하면 배열을 매번 순회할 필요 없이, 방금 새로 추가된 마지막 todo 항목만 화면에 추가됩니다. 이전 항목들은 다시 그려지지 않고, 최신 항목만 추가되므로 성능과 효율성 면에서 유리합니
+
 <br/>
 
 ## Key Feature(주요 기능)
 ### 1. 할 일 추가 기능
 ##### ▪ 사용자가 입력창(.input)에 텍스트를 입력하고 Enter 키를 누르거나, addBtn 버튼을 클릭하면 새로운 할 일(todo) 항목이 추가됨.
 ##### ▪ handleCreateTodo() 함수는 새로운 할 일을 newTodo에 추가하고, HTML 요소로 변환한 후 DOM에 추가함.
+##### ▪ insertAdjacentHTML로 문자열을 특정 위치에 삽입하는 메서드로, newTodo[newTodo.length - 1]을 사용하면 이전 항목은 다시 그리지 안고 새로 추가된 todo 항목만 화면에 추가 위해 사용 함.
 <br/>
 
 ### 2. 할 일 삭제 기능

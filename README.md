@@ -1,5 +1,5 @@
 ## Project Introduction(프로젝트 소개)
-##### ▪ Dynamic HTML Generation with ES6 Template Literals(ES6 템플릿 리터럴을 이용한 동적 HTML 생성)로 만든 Todo List
+##### ▪ Dynamic HTML Generation with ES6 Template Literals(ES6 템플릿 리터럴을 이용한 동적 HTML 생성)로 만든 To Do List
 <br/>
 
 ## What I've learned(배운 점)

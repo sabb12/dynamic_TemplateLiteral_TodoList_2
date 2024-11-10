@@ -76,5 +76,6 @@ templateLiteral_todoList_2
 ├── index.css
 ├── index.html
 ├── index.js
+├── README.md
 ```
 

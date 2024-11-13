@@ -72,7 +72,7 @@ document.addEventListener("click", function (e) {
 
 ## Project Structure(프로젝트 구조)
 ```markdown
-dynamic_TemplateLiteral_TodoList_2
+templateLiteral_TodoList_2
 ├── index.css
 ├── index.html
 ├── index.js
